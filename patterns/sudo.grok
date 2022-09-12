@@ -1,6 +1,7 @@
 SUDO_TTY TTY=%{NOTSPACE:sudo_tty}
 SUDO_PWD PWD=%{DATA:sudo_pwd}
-SUDO_COMMAND COMMAND=%{DATA:sudo_command}
+SUDO_COMMAND_ELEMENTS %{DATA:sudo_command}( %{GREEDYDATA:sudo_command_args})?$
+SUDO_COMMAND COMMAND=%{SUDO_COMMAND_ELEMENTS:sudo_command_line}
 SUDO_USER %{NOTSPACE:sudo_user}
 SUDO_RUNAS USER=%{SUDO_USER:sudo_runas}
 
